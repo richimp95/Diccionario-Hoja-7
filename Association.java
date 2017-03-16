@@ -1,7 +1,6 @@
 // A class for binding key/value pairs.
 // (c) 1998,2001 duane a. bailey
-package structure5;
-import java.util.Map;
+
 
 /*
 public class Association<K,V>
@@ -89,7 +88,7 @@ public class Association<K,V>
      */
     public boolean equals(Object other)
     {
-        Association otherAssoc = (Association)other;
+        Association<K,V> otherAssoc = (Association)other;
         return getKey().equals(otherAssoc.getKey());
     }
 
