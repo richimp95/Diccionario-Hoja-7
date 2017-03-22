@@ -35,7 +35,7 @@ public class Diccionario {
 						}
 					}
 				}
-				System.out.println(palabra+" "+word);
+				asociar(palabra, word);
 				cadena= traduccion.readLine();
 			}while(cadena!=null);
 		} catch (FileNotFoundException e) {
@@ -45,8 +45,9 @@ public class Diccionario {
 		traduccion.close();
 	}
 	
-	public String traducir (String texto){
-		return texto;
+	public void asociar (String ingles, String español){
+		Association a=new Association(ingles, español);
+		
 	}
 	
 }
