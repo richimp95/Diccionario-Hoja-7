@@ -15,12 +15,19 @@ public class Principal {
 		
 		try {
 			BufferedReader archivo=new BufferedReader(new FileReader(direccion));//cargar archivo
-			BufferedReader traduccion=new BufferedReader(new FileReader(direccion));//cargar archivo
+			BufferedReader traduccion=new BufferedReader(new FileReader(direccion2));//cargar archivo
 			
 			try {
 				String exprecion= archivo.readLine();//leer linea del archivo
-				
-				
+				String palabra="";
+				for(int i=0; i<exprecion.length();i++){
+				//se recorre la expresion y al encontrar un espacio se guarda y se traduce
+					char a=' ';
+					if(a==' '){
+						//palabra se traduce en diccionario
+						palabra="";
+					}
+				}
 				
 				
 				traduccion.close();
