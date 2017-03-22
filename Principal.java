@@ -6,16 +6,19 @@ import java.util.Scanner;
 
 public class Principal {
 
-	public static void main(String[] args) {
-		Scanner teclado = new Scanner(System.in);
-		System.out.println("Ingrese la direccion del archivo(.txt)");//ingresar direccion del archivo
-		String direccion =teclado.nextLine();
-		System.out.println("Ingrese la direccion del diccionario(.txt)");//ingresar direccion del archivo
-		String direccion2 =teclado.nextLine();
+	public static void main(String[] args) throws IOException {
+		String direccion ="texto.txt";
+		String direccion2 ="diccionario.txt";
+		try {
+			Diccionario dic = new Diccionario (direccion2);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		try {
 			BufferedReader archivo=new BufferedReader(new FileReader(direccion));//cargar archivo
-			BufferedReader traduccion=new BufferedReader(new FileReader(direccion2));//cargar archivo
+			
 			
 			try {
 				String exprecion= archivo.readLine();//leer linea del archivo
@@ -29,8 +32,7 @@ public class Principal {
 					}
 				}
 				
-				
-				traduccion.close();
+
 				archivo.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -40,7 +42,6 @@ public class Principal {
 			// TODO Auto-generated catch block
 			System.out.println("archivo no encontrado");//no hay archivo
 		}
-		teclado.close();
 		
 	}
 }
