@@ -3,10 +3,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Diccionario {
+public class Diccionario<E> {
 	
 	public Diccionario (String txt) throws IOException {
-
+		
 		BufferedReader traduccion = null;
 		try {
 			traduccion = new BufferedReader(new FileReader(txt));
@@ -15,6 +15,8 @@ public class Diccionario {
 			String word="";
 			char c=' ';
 			int a= 0;
+			
+			BinaryTree arbol=new BinaryTree();
 			do{
 				palabra="";
 				word="";
@@ -35,9 +37,16 @@ public class Diccionario {
 						}
 					}
 				}
-				asociar(palabra, word);
+				
+				Association<String, String> ass=new Association<>(word, palabra);
+				Node<E> newnode= new Node<>();
+                newnode.data = ass;
+                newnode.left=null;
+                newnode.right=null;
+                arbol.createNode(arbol.head,newnode);
 				cadena= traduccion.readLine();
 			}while(cadena!=null);
+			arbol.print();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,9 +54,5 @@ public class Diccionario {
 		traduccion.close();
 	}
 	
-	public void asociar (String ingles, String español){
-		Association a=new Association(ingles, español);
-		
-	}
 	
 }
